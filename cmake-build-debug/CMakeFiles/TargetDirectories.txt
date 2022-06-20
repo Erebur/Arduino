@@ -1,0 +1,3 @@
+H:/Daten/Programmieren/Gits/Arduino/cmake-build-debug/CMakeFiles/Arduino.dir
+H:/Daten/Programmieren/Gits/Arduino/cmake-build-debug/CMakeFiles/edit_cache.dir
+H:/Daten/Programmieren/Gits/Arduino/cmake-build-debug/CMakeFiles/rebuild_cache.dir
