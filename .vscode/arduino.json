@@ -1,5 +1,5 @@
 {
-    "sketch": "sketch_may02a\\sketch_may02a.ino",
+    "sketch": "bluetooth-android\\bluetooth-android.ino",
     "board": "arduino:avr:uno",
-    "port": "COM7"
+    "port": "COM4"
 }
