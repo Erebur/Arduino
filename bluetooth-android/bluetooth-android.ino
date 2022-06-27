@@ -129,8 +129,7 @@ void loop()
 //    }
 }
 
-void driveWithSerial(bool musicPlaying){
-  recvChar = blueToothSerial.read();
+void driveWithSerial(bool musicPlaying, char recvChar){
         Serial.print(recvChar);
         blueToothSerial.print("Help Me");
         if (recvChar == 'w')
@@ -184,7 +183,11 @@ void driveWithSerial(bool musicPlaying){
         }
         else if (recvChar == 'm' && !musicPlaying){
           Zelda();
-        }
+        } 
+}
+
+void driveWithSerial(bool musicPlaying){
+  driveWithSerial(musicPlaying, blueToothSerial.read());
 }
 
 void drive(){
@@ -222,9 +225,6 @@ void playMusic(int melody[], int tempo, int notes){
   // Remember, the array is twice the number of notes (notes + durations)
   for (int thisNote = 0; thisNote < notes * 2; 0)
   {
-
-
-
     // calculates the duration of each note
     divider = melody[thisNote + 1];
     if (divider > 0)
@@ -240,11 +240,15 @@ void playMusic(int melody[], int tempo, int notes){
     }
 
     unsigned int currentTime = millis();
-    
-  
+
     if (blueToothSerial.available())
     {
-      driveWithSerial(true);
+      char letter = blueToothSerial.read();
+      if (letter == 'p'){
+        noTone(buzzer);
+        break;
+      }
+      driveWithSerial(true, letter);
     }
 
     
