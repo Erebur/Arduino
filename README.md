@@ -1,4 +1,4 @@
-# ZumoShield
+♦# ZumoShield
 
 - [ZumoShield](#zumoshield)
   - [Ziel](#ziel)
@@ -104,7 +104,7 @@ Bei der Rückwärtsfahrt wird die standard Geschwindigkeit negiert.
 Wenn der Roboter sich drehen muss, wird eine der Geschwindigkeiten (in dieselbe Richtung wie er fahren will) halbiert.
 Bei der Rückfahrt, wird diese Funktion negiert.
 
-Musik spielen:
+- Musik spielen:
 
 ```c
     if (recvChar == 'm' && !musicPlaying){
