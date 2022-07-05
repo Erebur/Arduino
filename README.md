@@ -140,22 +140,13 @@ Es wird zuerst geprüft ob Musik schon spielt. Ohne diese Prüfung würde ein ne
             ...
             unsigned int currentTime = millis();
 
-            if (blueToothSerial.available())
+            ...
+            if (noteDuration + lastNote < currentTime)
             {
-                char letter = blueToothSerial.read();
-                if (letter == 'p')
-                {
-                    noTone(buzzer);
-                    break;
-                }
-                ...
-           }
-        ...
-        if (noteDuration + lastNote < currentTime)
-        {
-            noTone(buzzer);
-            lastNote = currentTime;
-            thisNote += 2;
+                noTone(buzzer);
+                lastNote = currentTime;
+                thisNote += 2;
+            }
         }
     }
 ```
