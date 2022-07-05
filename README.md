@@ -2,30 +2,30 @@
 
 - [ZumoShield](#zumoshield)
   - [Ziel](#ziel)
-  - [Features](#features)
+  - [Merkmale](#merkmale)
     - [Fahren](#fahren)
     - [Musik spielen](#musik-spielen)
-  - [Code snippets](#code-snippets)
+  - [Code Auszüge](#code-auszüge)
   - [Gelöste Probleme](#gelöste-probleme)
     - [Async Music](#async-music)
-    - [Buzzer & Bluetooth pins haben sich berührt](#buzzer--bluetooth-pins-haben-sich-berührt)
-    - [Doppelbelegung der Pins Durch Zumo und Bluetooth shield](#doppelbelegung-der-pins-durch-zumo-und-bluetooth-shield)
+    - [Buzzer & Bluetooth Pins haben sich berührt](#buzzer--bluetooth-pins-haben-sich-berührt)
+    - [Doppelbelegung der Pins durch Zumo und Bluetoothshield](#doppelbelegung-der-pins-durch-zumo-und-bluetoothshield)
   - [Nicht gelöste Probleme](#nicht-gelöste-probleme)
     - [Eigenschaften der Bluetooth verbindung](#eigenschaften-der-bluetooth-verbindung)
   - [Mögliche weitere Features](#mögliche-weitere-features)
     - [Selbst fahren](#selbst-fahren)
     - [Kurvenradius verstellen](#kurvenradius-verstellen)
-    - [Geschwindchkeit via slider ändern](#geschwindchkeit-via-slider-ändern)
+    - [Geschwindigkeit via Slider ändern](#geschwindigkeit-via-slider-ändern)
 
 ## Ziel
 
-Unser Ziel war, ein kleiner Sumoroboter, über eine Handyapp zu steuern.
+Unser Ziel war, ein kleiner [Sumoroboter](https://www.pololu.com/product/2508), über eine Handy-App zu steuern.
 
-## Features
+## Merkmale
 
 Muster:
 
-- {Feature} : {Button}
+- {Merkmal} : {Button}
 
 ### Fahren
 
@@ -44,13 +44,13 @@ Muster:
 
 ### Musik spielen
 
-Mehrere Songs von [hier](https://github.com/robsoncouto/arduino-songs) über Buzzer
+Es können mehrere Lieder von [hier](https://github.com/robsoncouto/arduino-songs) über den Buzzer gespielt werden.
 
-- play music : `m`
-- pause music : `p`
-- next song : `n`
+- Musik spielen : `m`
+- Musick pausieren : `p`
+- Lied überspriengen : `n`
 
-## Code snippets
+## Code Auszüge
 
 Fahren:
 
@@ -89,7 +89,7 @@ aufgerufen. Diese sorgt dafür, dass der Roboter dann auch fährt.
     }
 ```
 
-Bei der Rückwärtsfahrt wird die standandard Geschwindigkeit negiert.
+Bei der Rückwärtsfahrt wird die standard Geschwindigkeit negiert.
 
 - Kurven
 
@@ -101,7 +101,7 @@ Bei der Rückwärtsfahrt wird die standandard Geschwindigkeit negiert.
     }
 ```
 
-Wenn der Roboter sich drehen muss, wird eine der Geschwindigkeiten (in die selbe Richtung wie er fahren will) halbiert.
+Wenn der Roboter sich drehen muss, wird eine der Geschwindigkeiten (in dieselbe Richtung wie er fahren will) halbiert.
 Bei der Rückfahrt, wird diese Funktion negiert.
 
 Musik spielen:
@@ -127,7 +127,7 @@ Es wird zuerst geprüft ob Musik schon spielt. Ohne diese Prüfung würde ein ne
     }
 ```
 
-`songName` ist der Name vom Lied. `tempo` ist die Geschwindigkeit `melody` ein Array mit alle Noten und `notes` die Anzahl der Noten.
+`songName` ist der Name vom Lied. `tempo` ist die Geschwindigkeit `melody` ein Array mit allen Noten und `notes` die Anzahl der Noten.
 
 ```c
     void playMusic(int tempo, int melody[], int notes)
@@ -160,8 +160,8 @@ Es wird zuerst geprüft ob Musik schon spielt. Ohne diese Prüfung würde ein ne
     }
 ```
 
-Diese Funktion spiel dann das übergebenes Lied. Mithilfe von `millis()` und
-zwei Variablen (`lastNote` & `currentTime`) wird geprüft ob seit der letzten Note genug Zeit vergangen ist und die nächste spielen kann.
+Diese Funktion spiel dann das übergebene Lied. Mithilfe von `millis()` und
+zwei Variablen (`lastNote` & `currentTime`) wird geprüft ob seit der letzten Note genug Zeit vergangen ist und die Nächste spielen kann.
 
 Bluetooth Connection:
 
@@ -177,18 +177,18 @@ Bluetooth Connection:
         delay(400);
         blueToothSerial.print("AT+PIN0000"); // set the pair code to connect
         delay(400);
-        blueToothSerial.print("AT+AUTH1"); //
+        blueToothSerial.print("AT+AUTH1");
         delay(400);
         blueToothSerial.flush();
     }
 ```
-Es wird hier eine Verbindung Gestartet und die eigenen Eigenschaften erst auf standartwerte der Bibiliotek gesetzt und dann von unseren Passenderen überschriben, leider wurden unsere werte nicht zuverlässig überschrieben.
+Es wird hier eine Verbindung gestartet und die eigenen Eigenschaften erst auf Standardwerte der Bibliothek gesetzt. Dann mit passenderen überschrieben. Leider werden sie nicht immer zuverlässig überschrieben.
 
 ## Gelöste Probleme
 
 ### Async Music
 
-Das zweit Größte Problem war, dass man während das Musikspielen, keine andere Aktionen ausfuhren konnte.
+Das zweit Größte Problem war, dass man während das Musikspielen, keine anderen Aktionen ausfuhren konnte.
 
 Leider gibt es bei ein Mikrocontroller keine Möglichkeit, mehrere Threads zu erstellen oder Code async laufen zu lassen.
 
@@ -202,36 +202,36 @@ Um das Problem umzugehen, haben wir anstatt einen `delay()` eine if Abfrage erst
     }
 ```
 
-### Buzzer & Bluetooth pins haben sich berührt
+### Buzzer & Bluetooth Pins haben sich berührt
 
-Bei jeden Einschalten des Boards, hat man festgestellt, dass der Buzzer kurz angeht.
+Bei jedem Einschalten des Boards, hat man festgestellt, dass der Buzzer kurz angeht.
 
 Grund war, eine Berührung zwischen den Pins am Bluetoothboard & die Pins des Buzzers.
 
-Das Problem wurde gelöst, indem man noch eine Reihe an Abständen installiert hat, die den ganzen Bluetoothmodul höher gestellt hat.
+Das Problem wurde gelöst, indem man noch eine Reihe an Abständen installiert hat, die den ganzen Bluetoothmodul höhergestellt hat.
 
 [Arduino mit Abständen](./Arduino/images/arduino_mit_abstaenden.jpg)
 
-### Doppelbelegung der Pins Durch Zumo und Bluetooth shield
+### Doppelbelegung der Pins durch Zumo und Bluetoothshield
 
-Die Standart Pins des Bluetooth modules für Kommunikation überschneideten sich mit denen des Zumos, die Komunikation wurde dann gestört sobald die Motoren eingeschalltet werden sollten. Konnte einfach gelöst werden da das Bluetooth shield es ermöglichte die pins einfach per jumper zu verändern
+Die standard Pins des Bluetooth Moduls für Kommunikation überschneideten sich mit denen des Zumos, die Kommunikation wurde gestört sobald die Motoren eingeschaltet wurden. Konnte einfach gelöst werden, da das Bluetoothshield es ermöglichte, die Pins einfach per Jumper zu verändern.
 
 ## Nicht gelöste Probleme
 
 ### Eigenschaften der Bluetooth verbindung
 
-Die Bluetooth einstellungen werden manchmal korrekt übernommen und der Arduino Ist als `SeeedBT` ereichbar aber manchmal ist er als `HMSoft` ereichbar desweiteren wird auch das passwort nicht richtig gesetzt
+Die bluetooth Einstellungen werden manchmal korrekt übernommen und der Arduino ist als `SeeedBT` erreichbar manchmal aber als `HMSoft`. Des Weiteren wird auch das Passwort nicht richtig gesetzt.
 
 ## Mögliche weitere Features
 
 ### Selbst fahren
 
-Der Roboter hat auf der untere Seite eine Reihe an Lichtsensorn, die man nutzen könnte, um Weiße/Schwarze Linien zu folgen.
+Der Roboter hat auf der unteren Seite eine Reihe an Lichtsensorn, die man nutzen könnte, um weiße/schwarze Linien zu folgen.
 
 ### Kurvenradius verstellen
 
-Wie bereits schon erklärt, wird zurzeit bei Kurven die Geschwindigkeit auf eine Seite halbiert. Falls man aber scharfe Kurven fahren will, muss man zum Beispiel zwischen Linksvorne und Rechtshinten alternieren. Wenn man die Zahl durch der man teilt verändern könnte, wären steilere sowie scharfere Kurven möglich.
+Wie bereits schon erklärt, wird zurzeit bei Kurven die Geschwindigkeit auf eine Seite halbiert. Falls man aber scharfe Kurven fahren will, muss man zum Beispiel zwischen Linksvorne und Rechtshinten alternieren. Wenn man die Zahl durch der man teilt verändern könnte, wären steilere sowie schärfere Kurven möglich.
 
-### Geschwindchkeit via slider ändern
+### Geschwindigkeit via Slider ändern
 
-Wenn die geschwindichkeit geändert werden soll muss man in vordefinierten schriten verändern, dies ist jedoch für prezision schlecht und
+Wenn die Geschwindigkeit geändert werden soll muss man in vordefinierten Schriten verändern, dies ist jedoch für Prezision schlecht.
