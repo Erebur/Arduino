@@ -110,12 +110,10 @@ SoftwareSerial blueToothSerial(RxD, TxD);
 
 void setup()
 {
-    Serial.println("started");
     Serial.begin(9600);
     pinMode(RxD, INPUT);
     pinMode(TxD, OUTPUT);
     setupBlueToothConnection();
-    Serial.println("started");
 }
 char recvChar;
 void loop()
@@ -126,55 +124,44 @@ void loop()
 }
 
 void driveWithSerial(bool musicPlaying, char recvChar){
-        Serial.print(recvChar);
-        blueToothSerial.print("Help Me");
         if (recvChar == 'w')
         {
           speedL = defSpeed;
           speedR = defSpeed;
           drive();
-          Serial.println("forward");
         }else if (recvChar == 'a'){
           speedR = defSpeed;
           speedL = defSpeed / 2;
           drive();
-          Serial.println("left");
         } else if (recvChar == 's'){
             speedL = -defSpeed;
             speedR = -defSpeed;
             drive();
-            Serial.println("back");
         } else if (recvChar == 'd'){
             speedR = defSpeed / 2 ;
             speedL = defSpeed;
             drive();
-            Serial.println("right");
         }else if (recvChar == 'z'){
             speedL = -(defSpeed / 2) ;
             speedR = -defSpeed;
             drive();
-            Serial.println("left back");
         }
         else if (recvChar == 'x'){
             speedR = -(defSpeed / 2) ;
             speedL = -defSpeed;
             drive();
-            Serial.println("right back");
         }
         else if (recvChar == 'q'){
             speedL = 0;
             speedR = 0;
             drive();
-            Serial.println("right");
         }else if (recvChar == 'r'){
             if (defSpeed <= 500){
               defSpeed += 50;
-              Serial.println("i am speed");
             }
         }else if (recvChar == 'f'){
             if (defSpeed >= 50){
               defSpeed -= 50;
-              Serial.println("i am flash");
             }
         }else if (recvChar == 'n' && !musicPlaying){
           currentSong++;
