@@ -210,7 +210,7 @@ Grund war, eine Berührung zwischen den Pins am Bluetoothboard & die Pins des Bu
 
 Das Problem wurde gelöst, indem man noch eine Reihe an Abständen installiert hat, die den ganzen Bluetoothmodul höher gestellt hat.
 
-[Arduino mit Abständen](../Arduino/images/arduino_mit_abstaenden.jpg)
+[Arduino mit Abständen](./Arduino/images/arduino_mit_abstaenden.jpg)
 
 ### Doppelbelegung der Pins Durch Zumo und Bluetooth shield
 
