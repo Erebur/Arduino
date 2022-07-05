@@ -90,6 +90,7 @@
 #define REST 0
 
 int buzzer = 3;
+int currentSong = 0;
 
 #include <SoftwareSerial.h> //Software Serial Port
 #include <Wire.h>
@@ -180,9 +181,11 @@ void driveWithSerial(bool musicPlaying, char recvChar){
               defSpeed -= 50;
               Serial.println("i am flash");
             }
+        }else if (recvChar == 'n' && !musicPlaying){
+          currentSong++;
         }
         else if (recvChar == 'm' && !musicPlaying){
-          Zelda();
+          playSong();
         } 
 }
 
@@ -263,6 +266,17 @@ void playMusic(int melody[], int tempo, int notes){
   }
 }
 
+void playSong(){
+  int songCount = 3;
+  if (currentSong % songCount == 0){
+    HawwyPopper();
+  }else if (currentSong % songCount == 1){
+    PacMan();
+  }else{
+    Zelda();
+  }
+}
+
 void Zelda()
 {
   int tempo = 88;
@@ -308,4 +322,81 @@ void Zelda()
   
   playMusic(melody, tempo, notes);
   
+}
+
+void PacMan(){
+  int tempo = 105;
+
+
+  // notes of the moledy followed by the duration.
+  // a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
+  // !!negative numbers are used to represent dotted notes,
+  // so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
+  int melody[] = {
+
+    // Pacman
+    // Score available at https://musescore.com/user/85429/scores/107109
+    NOTE_B4, 16, NOTE_B5, 16, NOTE_FS5, 16, NOTE_DS5, 16, //1
+    NOTE_B5, 32, NOTE_FS5, -16, NOTE_DS5, 8, NOTE_C5, 16,
+    NOTE_C6, 16, NOTE_G6, 16, NOTE_E6, 16, NOTE_C6, 32, NOTE_G6, -16, NOTE_E6, 8,
+  
+    NOTE_B4, 16,  NOTE_B5, 16,  NOTE_FS5, 16,   NOTE_DS5, 16,  NOTE_B5, 32,  //2
+    NOTE_FS5, -16, NOTE_DS5, 8,  NOTE_DS5, 32, NOTE_E5, 32,  NOTE_F5, 32,
+    NOTE_F5, 32,  NOTE_FS5, 32,  NOTE_G5, 32,  NOTE_G5, 32, NOTE_GS5, 32,  NOTE_A5, 16, NOTE_B5, 8
+  };
+  int notes = sizeof(melody) / sizeof(melody[0]) / 2;
+
+  playMusic(melody, tempo, notes);
+}
+
+void HawwyPopper(){
+  int tempo = 144;
+
+  int melody[] = {
+  
+  
+    // Hedwig's theme fromn the Harry Potter Movies
+    // Socre from https://musescore.com/user/3811306/scores/4906610
+    
+    REST, 2, NOTE_D4, 4,
+    NOTE_G4, -4, NOTE_AS4, 8, NOTE_A4, 4,
+    NOTE_G4, 2, NOTE_D5, 4,
+    NOTE_C5, -2, 
+    NOTE_A4, -2,
+    NOTE_G4, -4, NOTE_AS4, 8, NOTE_A4, 4,
+    NOTE_F4, 2, NOTE_GS4, 4,
+    NOTE_D4, -1, 
+    NOTE_D4, 4,
+  
+    NOTE_G4, -4, NOTE_AS4, 8, NOTE_A4, 4, //10
+    NOTE_G4, 2, NOTE_D5, 4,
+    NOTE_F5, 2, NOTE_E5, 4,
+    NOTE_DS5, 2, NOTE_B4, 4,
+    NOTE_DS5, -4, NOTE_D5, 8, NOTE_CS5, 4,
+    NOTE_CS4, 2, NOTE_B4, 4,
+    NOTE_G4, -1,
+    NOTE_AS4, 4,
+       
+    NOTE_D5, 2, NOTE_AS4, 4,//18
+    NOTE_D5, 2, NOTE_AS4, 4,
+    NOTE_DS5, 2, NOTE_D5, 4,
+    NOTE_CS5, 2, NOTE_A4, 4,
+    NOTE_AS4, -4, NOTE_D5, 8, NOTE_CS5, 4,
+    NOTE_CS4, 2, NOTE_D4, 4,
+    NOTE_D5, -1, 
+    REST,4, NOTE_AS4,4,  
+  
+    NOTE_D5, 2, NOTE_AS4, 4,//26
+    NOTE_D5, 2, NOTE_AS4, 4,
+    NOTE_F5, 2, NOTE_E5, 4,
+    NOTE_DS5, 2, NOTE_B4, 4,
+    NOTE_DS5, -4, NOTE_D5, 8, NOTE_CS5, 4,
+    NOTE_CS4, 2, NOTE_AS4, 4,
+    NOTE_G4, -1, 
+    
+  };
+
+  int notes = sizeof(melody) / sizeof(melody[0]) / 2;
+
+  playMusic(melody, tempo, notes);
 }
