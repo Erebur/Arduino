@@ -19,7 +19,7 @@
 
 ## Ziel
 
-Unser Ziel war, ein kleiner [Sumoroboter](https://www.pololu.com/product/2508), über eine Handy-App zu steuern.
+Unser Ziel war, ein kleiner [Sumoroboter](https://www.pololu.com/product/2508), über eine [Handy-App](https://play.google.com/store/apps/details?id=com.shenyaocn.android.BlueSPP&hl=en&gl=US) zu steuern.
 
 ## Merkmale
 
@@ -226,3 +226,5 @@ Wie bereits schon erklärt, wird zurzeit bei Kurven die Geschwindigkeit auf eine
 ### Geschwindigkeit via Slider ändern
 
 Wenn die Geschwindigkeit geändert werden soll muss man in vordefinierten Schriten verändern, dies ist jedoch für Prezision schlecht.
+
+### Eigene App
