@@ -1,4 +1,4 @@
-♦# ZumoShield
+# ZumoShield
 
 - [ZumoShield](#zumoshield)
   - [Ziel](#ziel)
