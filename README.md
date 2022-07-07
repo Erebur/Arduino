@@ -228,4 +228,5 @@ Wie bereits schon erklärt, wird zurzeit bei Kurven die Geschwindigkeit auf eine
 Wenn die Geschwindigkeit geändert werden soll muss man in vordefinierten Schriten verändern, dies ist jedoch für Prezision schlecht.
 
 ### Eigene App
-Eine Android App mit einem Joistick für Geschwindichkeit regulierung und richtung und Buttons mit der die Musik gesteuert werden kann  
+
+Eine Android App, in der man mit einem Joystick steuern kann. Die Geschwindigkeit sollte per Slider veränderbar sein und die Musik kann auch in der App ausgewählt werden.
